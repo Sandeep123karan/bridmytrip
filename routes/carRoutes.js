@@ -1,16 +1,4 @@
-// const express = require("express");
-// const router = express.Router();
-// const {
-//   addCar,
-//   getAllCars,
-//   deleteCar,
-// } = require("../controllers/carController");
 
-// router.post("/add-car", addCar);
-// router.get("/cars", getAllCars);
-// router.delete("/car/:id", deleteCar);
-
-// module.exports = router;
 const express = require("express");
 const router = express.Router();
 const {

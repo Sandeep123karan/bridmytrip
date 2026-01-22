@@ -1,35 +1,16 @@
-// // routes/forexBookingRoutes.js
-// import express from "express";
-// import {
-//   createBooking,
-//   getBookings,
-//   updateBookingStatus,
-//   deleteBooking,
-// } from "../controllers/forexBookingController.js";
-
-// const router = express.Router();
-
-// router.post("/forex-bookings", createBooking);         // Create booking
-// router.get("/forex-bookings", getBookings);            // Get all bookings
-// router.put("/forex-bookings/:id", updateBookingStatus); // Update booking status
-// router.delete("/forex-bookings/:id", deleteBooking);    // Delete booking
-
-
-// export default router;
 const express = require("express");
+const router = express.Router();
+
 const {
   createBooking,
   getBookings,
   updateBookingStatus,
-  deleteBooking,
-} = require("../controllers/forexBookingController.js");
+  deleteBooking
+} = require("../controllers/forexBookingController");
 
-const router = express.Router();
-
-router.post("/forex-bookings", createBooking);          // Create booking
-router.get("/forex-bookings", getBookings);             // Get all bookings
-router.put("/forex-bookings/:id", updateBookingStatus); // Update booking status
-router.delete("/forex-bookings/:id", deleteBooking);    // Delete booking
+router.post("/forex-bookings", createBooking);
+router.get("/forex-bookings", getBookings);
+router.put("/forex-bookings/:id", updateBookingStatus);
+router.delete("/forex-bookings/:id", deleteBooking);
 
 module.exports = router;
-

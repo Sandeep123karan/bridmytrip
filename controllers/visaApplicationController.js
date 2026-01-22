@@ -1,36 +1,115 @@
 // const VisaApplication = require('../models/VisaApplication');
 
-// exports.getApplications = async (req, res, next) => {
-//     try {
-//         const apps = await VisaApplication.find();
-//         res.json(apps);
-//     } catch (err) { next(err); }
+// // CREATE
+// exports.createVisaApplication = async (req, res) => {
+//   try {
+//     const doc = await VisaApplication.create(req.body);
+//     res.status(201).json(doc);
+//   } catch (err) {
+//     res.status(500).json({ message: 'Server Error' });
+//   }
 // };
 
-// exports.createApplication = async (req, res, next) => {
-//     try {
-//         const newApp = new VisaApplication(req.body);
-//         await newApp.save();
-//         res.status(201).json(newApp);
-//     } catch (err) { next(err); }
+// // READ ALL
+// exports.getAllVisaApplications = async (req, res) => {
+//   try {
+//     const docs = await VisaApplication.find().sort({ createdAt: -1 });
+//     res.json(docs);
+//   } catch (err) {
+//     res.status(500).json({ message: 'Server Error' });
+//   }
 // };
 
-// exports.updateApplication = async (req, res, next) => {
-//     try {
-//         const updatedApp = await VisaApplication.findByIdAndUpdate(
-//             req.params.id,
-//             req.body,
-//             { new: true }
-//         );
-//         if (!updatedApp) return res.status(404).json({ message: 'Not found' });
-//         res.json(updatedApp);
-//     } catch (err) { next(err); }
+// // READ ONE
+// exports.getVisaApplication = async (req, res) => {
+//   try {
+//     const doc = await VisaApplication.findById(req.params.id);
+//     if (!doc) return res.status(404).json({ message: 'Not Found' });
+//     res.json(doc);
+//   } catch (err) {
+//     res.status(500).json({ message: 'Server Error' });
+//   }
 // };
 
-// exports.deleteApplication = async (req, res, next) => {
-//     try {
-//         const deleted = await VisaApplication.findByIdAndDelete(req.params.id);
-//         if (!deleted) return res.status(404).json({ message: 'Not found' });
-//         res.json({ success: true });
-//     } catch (err) { next(err); }
+// // UPDATE
+// exports.updateVisaApplication = async (req, res) => {
+//   try {
+//     const doc = await VisaApplication.findByIdAndUpdate(
+//       req.params.id,
+//       req.body,
+//       { new: true }
+//     );
+//     if (!doc) return res.status(404).json({ message: 'Not Found' });
+//     res.json(doc);
+//   } catch (err) {
+//     res.status(500).json({ message: 'Server Error' });
+//   }
 // };
+
+// // DELETE
+// exports.deleteVisaApplication = async (req, res) => {
+//   try {
+//     const doc = await VisaApplication.findByIdAndDelete(req.params.id);
+//     if (!doc) return res.status(404).json({ message: 'Not Found' });
+
+//     res.json({ success: true });
+//   } catch (err) {
+//     res.status(500).json({ message: 'Server Error' });
+//   }
+// };
+
+const VisaApplication = require("../models/VisaApplication");
+
+// CREATE
+exports.createVisaApplication = async (req, res) => {
+  try {
+    const doc = await VisaApplication.create(req.body);
+    res.status(201).json(doc);
+  } catch (err) {
+    res.status(500).json({ message: "Server Error", error: err.message });
+  }
+};
+
+// READ ALL
+exports.getAllVisaApplications = async (req, res) => {
+  try {
+    const docs = await VisaApplication.find().sort({ createdAt: -1 });
+    res.json(docs);
+  } catch (err) {
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
+// READ ONE
+exports.getVisaApplication = async (req, res) => {
+  try {
+    const doc = await VisaApplication.findById(req.params.id);
+    if (!doc) return res.status(404).json({ message: "Not Found" });
+    res.json(doc);
+  } catch (err) {
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
+// UPDATE
+exports.updateVisaApplication = async (req, res) => {
+  try {
+    const doc = await VisaApplication.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!doc) return res.status(404).json({ message: "Not Found" });
+    res.json(doc);
+  } catch (err) {
+    res.status(500).json({ message: "Server Error" });
+  }
+};
+
+// DELETE
+exports.deleteVisaApplication = async (req, res) => {
+  try {
+    const doc = await VisaApplication.findByIdAndDelete(req.params.id);
+    if (!doc) return res.status(404).json({ message: "Not Found" });
+
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ message: "Server Error" });
+  }
+};

@@ -5,7 +5,9 @@ const clubEventSchema = new mongoose.Schema({
   description: String,
   date: { type: Date, required: true },
   location: String,
-  organizer: String
+  organizer: String,
+  price: { type: Number, default: 0 },
+  status: { type: String, default: "Upcoming" }
 }, { timestamps: true });
 
 module.exports = mongoose.model("ClubEvent", clubEventSchema);

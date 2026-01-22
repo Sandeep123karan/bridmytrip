@@ -1,13 +1,30 @@
 const ClubEvent = require("../models/ClubEvent");
 
+// exports.getEvents = async (req, res) => {
+//   try {
+//     const events = await ClubEvent.find();
+//     res.json(events);
+//   } catch (err) {
+//     res.status(500).json({ message: err.message });
+//   }
+// };
 exports.getEvents = async (req, res) => {
   try {
-    const events = await ClubEvent.find();
+    let events = await ClubEvent.find();
+
+    // Add price & status for old events that don't have them
+    events = events.map(ev => ({
+      ...ev._doc,
+      price: ev.price !== undefined ? ev.price : 0,
+      status: ev.status || "Upcoming"
+    }));
+
     res.json(events);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 };
+
 
 exports.addEvent = async (req, res) => {
   try {

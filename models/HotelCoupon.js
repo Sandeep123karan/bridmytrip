@@ -1,16 +1,18 @@
 const mongoose = require("mongoose");
 
-const hotelCouponSchema = new mongoose.Schema({
-  couponCode: String,
-  regionType: String,
-  starRating: [String],  // example: ["4", "3", "2", "1"]
-  couponType: { type: String, enum: ["Fixed", "Percentage"] },
-  value: Number,
-  maxLimit: Number,
-  useLimit: Number,
-  expireFrom: Date,
-  expireTo: Date,
-  status: { type: String, enum: ["Active", "Inactive"], default: "Active" }
-}, { timestamps: true });
+const hotelCouponSchema = new mongoose.Schema(
+  {
+    code: { type: String, required: true, unique: true },
+    regionType: String,
+    starRating: String,
+    couponType: String,
+    value: Number,
+    maxLimit: Number,
+    useLimit: Number,
+    expiry: String,
+    status: { type: Boolean, default: true }, // true = active
+  },
+  { timestamps: true }
+);
 
 module.exports = mongoose.model("HotelCoupon", hotelCouponSchema);

@@ -1,14 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const controller = require("../controllers/addHolidayController");
-const multer = require("multer");
 
-// Multer config
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "uploads/"),
-  filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname)
-});
-const upload = multer({ storage });
+const controller = require("../controllers/addHolidayController");
+const cloudUpload = require("../middleware/cloudUpload");
+
+const upload = cloudUpload("holiday-packages");
 
 router.get("/", controller.getAllHolidays);
 router.post("/", upload.single("packageImage"), controller.createHoliday);
