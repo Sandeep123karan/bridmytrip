@@ -42,3 +42,75 @@
 // }, { timestamps: true });
 
 // export default mongoose.model("InsuranceBooking", insuranceBookingSchema);
+
+
+
+
+const mongoose = require("mongoose");
+
+const insuranceBookingSchema = new mongoose.Schema({
+
+plan:{
+    type:Object,
+    required:true
+},
+
+// PERSONAL
+fullName:{
+    type:String,
+    required:true,
+    trim:true
+},
+
+dob:String,
+nationality:String,
+visaType:String,
+passportNumber:String,
+passportExpiry:String,
+panNumber:String,
+noPan:Boolean,
+
+email:{
+    type:String,
+    required:true,
+    trim:true
+},
+
+phoneNumber:{
+    type:String,
+    required:true
+},
+
+alternatePhone:String,
+address:String,
+city:String,
+pincode:String,
+
+// NOMINEE
+nomineeName:String,
+nomineeRelation:String,
+nomineeDob:String,
+
+// MEDICAL
+hasMedicalConditions:Boolean,
+medicalConditions:String,
+isPregnant:Boolean,
+pregnancyWeeks:String,
+
+// PAYMENT
+paymentStatus:{
+    type:String,
+    default:"Pending"
+},
+
+paymentId:String,
+
+// BOOKING STATUS
+status:{
+    type:String,
+    default:"Booked"
+}
+
+},{timestamps:true});
+
+module.exports = mongoose.model("InsuranceBooking", insuranceBookingSchema);

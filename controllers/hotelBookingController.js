@@ -32,6 +32,7 @@
 //     res.status(500).json({ message: err.message });
 //   }
 // };
+
 const HotelBooking = require("../models/hotelBookingModel");
 
 // GET all bookings (with filters)

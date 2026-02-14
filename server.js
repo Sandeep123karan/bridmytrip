@@ -371,6 +371,7 @@ const forexSettingRoutes = require("./routes/forexSettingRoutes");
 const visaCountryRoutes = require("./routes/visaCountryRoutes");
 const documentRequirementRoutes = require("./routes/documentRequirementRoutes");
 const flightUploadTicketRoutes = require("./routes/flightUploadTicketRoutes");
+const paymentRoutes = require("./routes/paymentRoutes");
 
 
 // ⭐ NEW: Cruise Routes
@@ -421,7 +422,7 @@ app.use("/api/flight-markup", flightMarkupRoutes);
 app.use("/api/flight-discounts", flightDiscountRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/flight-bookings", flightBookingRoutes);
-
+app.use("/api/payment", paymentRoutes);
 app.use("/api/flight-amendments", flightAmendmentRoutes);
 app.use("/api/flight-coupons", flightCouponRoutes);
 app.use("/api/flight-top-destinations", flightTopDestinationRoutes);
@@ -464,7 +465,7 @@ app.use("/api/car-discounts", carDiscountRoutes);
 app.use("/api/car-coupons", carCouponRoutes);
 app.use("/api/admin/car-settings", carSettingRoutes);
 app.use("/api/admin", couponLogRoutes);
-app.use("/api/admin", pageRoutes);
+app.use("/api/admin", pageRoutes);  
 app.use("/api/admin/menus", require("./routes/menuRoutes"));
 app.use("/api/contacts", contactRoutes);
 app.use("/api/blog-categories", blogCategoryRoutes);
@@ -483,6 +484,11 @@ app.use("/api/train-discounts", require("./routes/trainDiscountRoutes"));
 app.use("/api/train-coupons", require("./routes/trainCouponRoutes"));
 app.use("/api/pnr-status", require("./routes/pnrRoutes"));
 app.use("/api/flight-upload-tickets", flightUploadTicketRoutes);
+app.use("/api/insurance-policies",
+require("./routes/insurancePolicyRoutes"));
+app.use("/api/insurance-bookings",
+require("./routes/insuranceBookingRoutes"));
+
 
 
 
